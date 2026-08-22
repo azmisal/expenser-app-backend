@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import { transactionRoutes } from "./modules/transactions/transaction.routes";
+import { categoryRoutes } from "./modules/catogories/category.routes";
 
 export function buildApp() {
   const app = Fastify({ logger: true });
@@ -9,6 +10,7 @@ export function buildApp() {
   });
 
   app.register(transactionRoutes);
+  app.register(categoryRoutes);
 
   return app;
 }

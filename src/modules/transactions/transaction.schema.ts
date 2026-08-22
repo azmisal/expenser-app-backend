@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { categoryEnum } from "../catogories/categories.schema";
 
 const splitPersonSchema = z.object({
   name: z.string().min(1),
@@ -14,7 +15,7 @@ export const createTransactionSchema = z
     splitType: z.enum(["none", "equal", "custom"]),
     people: z.array(z.string()).default([]), // used for equal split
     splits: z.array(splitPersonSchema).optional(), // used for custom split
-    category: z.string().min(1),
+    category: categoryEnum,
     description: z.string().min(1),
   })
   .refine(

@@ -32,3 +32,8 @@ feat: add GET /transactions with pagination and timezone-aware period filters
 - Supports hourly/daily/weekly/monthly/yearly filtering
 - Period boundaries computed in client's local timezone, converted to UTC for DB queries
 - Standard offset pagination (page/limit)
+
+3.  Branch: feat/transaction-by-id
+feat: add GET /transactions/:id with 404 handling
+
+-Added api for single transaction details fetch

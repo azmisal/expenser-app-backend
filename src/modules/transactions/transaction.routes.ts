@@ -48,7 +48,6 @@ export async function transactionRoutes(app: FastifyInstance) {
     });
 
 
-
     app.get("/transactions", async (request, reply) => {
         const query = request.query as {
             page?: string;
@@ -99,5 +98,20 @@ export async function transactionRoutes(app: FastifyInstance) {
                 totalPages: Math.ceil(total / limit),
             },
         };
+    });
+
+    app.get("/transactions/:id", async (request, reply) => {
+        const { id } = request.params as { id: string };
+
+        const transaction = await prisma.transaction.findUnique({
+            where: { id },
+            include: { splits: true },
+        });
+
+        if (!transaction) {
+            return reply.status(404).send({ error: "Transaction not found" });
+        }
+
+        return transaction;
     });
 }

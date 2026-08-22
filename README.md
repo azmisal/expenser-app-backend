@@ -37,3 +37,10 @@ feat: add GET /transactions with pagination and timezone-aware period filters
 feat: add GET /transactions/:id with 404 handling
 
 -Added api for single transaction details fetch
+
+4. Branch: feat/dashboard-summary
+feat: add GET /dashboard/summary with total and per-category spend breakdown
+
+- Aggregates transactions within a timezone-aware period window (reuses getPeriodStart)
+- Returns both totalSpent (full amount) and totalMySpent (your actual share)
+- Per-category breakdown includes both total and mySpent for consistency
